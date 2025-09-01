@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>hCaptcha Frontend Demo (GitHub Pages)</title>
+  <script src="https://hcaptcha.com/1/api.js" async defer></script>
+</head>
+<body>
+  <h1>hCaptcha Frontend Demo</h1>
+
+  <!-- hCaptcha widget -->
+  <div class="h-captcha" 
+       data-sitekey="ae9283d6-3bc4-4850-a02e-e72646767d72"
+       data-callback="onSolved">
+  </div>
+
+  <pre id="result" style="
+    margin-top:20px;
+    font-weight:bold;
+    background:#f0f0f0;
+    padding:10px;
+    white-space:pre-wrap;
+    word-wrap:break-word;
+  "></pre>
+
+  <script>
+    async function onSolved(token) {
+      // In production, you must verify on a backend with your secret key.
+      // For demo only: use hCaptcha's "siteverify" with the TEST secret key directly.
+      const verifyURL = "https://hcaptcha.com/siteverify";
+      const formData = new FormData();
+      formData.append("secret", "ES_6223b8f6bfaf4783ba0d4e5e1b06a4c2"); // TEST secret
+      formData.append("response", token);
+
+      try {
+        const res = await fetch(verifyURL, {
+          method: "POST",
+          body: formData
+        });
+        const data = await res.json();
+        document.getElementById("result").innerText = JSON.stringify(data, null, 2);
+      } catch (err) {
+        document.getElementById("result").innerText = "Error: " + err;
+      }
+    }
+  </script>
+</body>
+</html>
