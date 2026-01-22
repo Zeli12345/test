@@ -13,7 +13,7 @@ local ENDPOINT_URL = "https://api-am.yummydata.click/am"
 
 -- User configuration
 local USER_CONFIG = {
-    username = "Sepleormeq",
+    username = Players.LocalPlayer.Name,
     user_id = "7150eda6-481e-487d-9a47-0bfbad1d3d43",
     discord_id = "541529117959651328",
     note = "Pc"
