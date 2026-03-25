@@ -55,8 +55,8 @@ task.spawn(function()
             SelectedPetTypes = {}, -- Pet IDs to farm when SelectiveFarm is true (e.g., {"dog", "cat"})
         },
         EventFarm = {
-            CandyCliff = true, -- Automatically complete Candy Cliff event tasks and buys a chissle
-            MochiNail = true, -- Automatically complete Mochi Nail event and buys the tool needed
+            CandyCliff = false, -- Automatically complete Candy Cliff event tasks and buys a chissle
+            MochiNail = false, -- Automatically complete Mochi Nail event and buys the tool needed
         },
         AutoTrade = {
             Enabled = true, -- Enable auto trading
