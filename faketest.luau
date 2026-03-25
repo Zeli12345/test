@@ -144,7 +144,7 @@ task.spawn(function()
             },
         },
         Settings = {
-            AutoShowUI = true, -- Load the UI on script start (main overlay disable for less memory usage)
+            AutoShowUI = false, -- Load the UI on script start (main overlay disable for less memory usage)
             ShowOverlay = true, -- Show stats overlay (disables 3D rendering)
             ReduceGraphics = true, -- Reduce graphics quality to minimum
             FPSCap = 1, -- FPS cap option (0 = uncapped)
