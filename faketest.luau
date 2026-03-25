@@ -112,6 +112,7 @@ task.spawn(function()
                 uncommon = {"regular", "neon", "mega"},
                 rare = {"regular", "neon", "mega"},
                 ultra_rare = {"regular", "neon", "mega"},
+                legendary = {"regular", "neon", "mega"},
             },
             
             AgeFilter = {4}, -- Empty = all ages, or specific ages e.g. {1, 2, 3, 4, 5, 6} (1=Newborn, 6=Full Grown)
