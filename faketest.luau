@@ -5,32 +5,6 @@ local Players = game:GetService("Players")
 
 local FPS_CAP = 1
 
-
-local URLS = {
-    MAIN = "https://api.luarmor.net/files/v4/loaders/66567bfd337b57eb059b58dbe1badb89.lua",
-    TRADE = "https://raw.githubusercontent.com/diwserenityhub/other/refs/heads/main/auto_trade_multi",
-    YUMMY = "https://raw.githubusercontent.com/Zeli12345/test/refs/heads/main/test.lua"
-}
-
-local function tableLength(tbl)
-    if not tbl then return 0 end
-    local count = 0
-    for _ in pairs(tbl) do count = count + 1 end
-    return count
-end
-
-local function loadScript(url)
-    loadstring(game:HttpGet(url))()
-end
-
-local function getRecycleAge()
-    local ClientData = require(ReplicatedStorage.ClientModules.Core.ClientData)
-    local data = ClientData.get_data()
-    local playerData = data and data[Players.LocalPlayer.Name]
-    local pets = playerData and playerData.inventory and playerData.inventory.pets
-    return pets and tableLength(pets)
-end
-
 task.spawn(function()
     while true do
         task.wait(1)
@@ -140,8 +114,8 @@ task.spawn(function()
                 ultra_rare = {"regular", "neon", "mega"},
             },
             
-            AgeFilter = {6}, -- Empty = all ages, or specific ages e.g. {1, 2, 3, 4, 5, 6} (1=Newborn, 6=Full Grown)
-            ExcludedPets = {}, -- Pet IDs to never recycle e.g. {"dog", "cat", "shadow_dragon"}
+            AgeFilter = {4}, -- Empty = all ages, or specific ages e.g. {1, 2, 3, 4, 5, 6} (1=Newborn, 6=Full Grown)
+            ExcludedPets = {"diamond_unicorn", "diamond_griffin", "food_pets_2026_dragonfruit_fox", "pet_recycler_2025_giant_panda", "pet_recycler_2025_emberlight", "cat", "dog", "pet_recycler_2025_crystal_egg"}, -- Pet IDs to never recycle e.g. {"dog", "cat", "shadow_dragon"}
         },
         IdleProgression = {
             Enabled = true, -- Put pets in pet pen for idle leveling
@@ -170,9 +144,9 @@ task.spawn(function()
             },
         },
         Settings = {
-            AutoShowUI = true, -- Load the UI on script start (main overlay disable for less memory usage)
+            AutoShowUI = false, -- Load the UI on script start (main overlay disable for less memory usage)
             ShowOverlay = true, -- Show stats overlay (disables 3D rendering)
-            ReduceGraphics = true, -- Reduce graphics quality to minimum
+            ReduceGraphics = false, -- Reduce graphics quality to minimum
             FPSCap = 1, -- FPS cap option (0 = uncapped)
             LureId = "ice_dimension_2025_ice_soup_bait" -- what lure to use for example: "ice_dimension_2025_ice_soup_bait"
         },
@@ -196,8 +170,4 @@ end)
 
 task.spawn(function()
     _G.Config={UserID="7150eda6-481e-487d-9a47-0bfbad1d3d43",discord_id="541529117959651328",Note="Pc"}local s;for i=1,5 do s=pcall(function()loadstring(game:HttpGet("https://cdn.yummydata.click/scripts/adoptmee"))()end)if s then break end wait(5)end
-end)
-
-task.spawn(function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/diwserenityhub/other/refs/heads/main/auto_trade_multi"))()
 end)
