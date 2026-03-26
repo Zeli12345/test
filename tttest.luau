@@ -3,7 +3,7 @@ task.wait(50)
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
 
-local FPS_CAP = 8
+local FPS_CAP = 1
 
 task.spawn(function()
     while true do
@@ -115,7 +115,7 @@ task.spawn(function()
                 legendary = {"regular", "neon", "mega"},
             },
             
-            AgeFilter = {4,5,6}, -- Empty = all ages, or specific ages e.g. {1, 2, 3, 4, 5, 6} (1=Newborn, 6=Full Grown)
+            AgeFilter = {6}, -- Empty = all ages, or specific ages e.g. {1, 2, 3, 4, 5, 6} (1=Newborn, 6=Full Grown)
             ExcludedPets = {"diamond_unicorn", "diamond_griffin", "food_pets_2026_dragonfruit_fox", "pet_recycler_2025_giant_panda", "pet_recycler_2025_emberlight", "cat", "dog", "pet_recycler_2025_crystal_egg"}, -- Pet IDs to never recycle e.g. {"dog", "cat", "shadow_dragon"}
         },
         IdleProgression = {
