@@ -56,9 +56,9 @@ task.spawn(function()
 
 
         ["PetPenActive"] = true, -- will put pets in pen, random pets
-        ["PetPenFocusPriority"] = false, -- will focus those pets order in pen, then farm any other pets
+        ["PetPenFocusPriority"] = true, -- will focus those pets order in pen, then farm any other pets
         ["PetPenFocusPetOrder"] = {"Ant", "Mouse","Camel","Donkey","Poodle"}, -- pet names to focus in pen exemple {"Donkey","Camel","Zebra"}
-        ["PetPenFocusPetRarity"] = true, -- PetPenFocusPriority must be false else will ignore
+        ["PetPenFocusPetRarity"] = false, -- PetPenFocusPriority must be false else will ignore
         ["PetPenFocusPetRarityOrder"] = {"common","uncommon","rare","ultra_rare","legendary"}, -- will farm pet rarity depending on order using pet pen exemple "common","uncommon","rare","ultra_rare","legendary"
         ["PetPenAutoNeon"] = false, -- will try to make neon pets, check after it remove fullgrown pet from pen
         ["PetPenAutoMega"] = false, -- will try to make mega pets, check after it remove fullgrown pet from pen
