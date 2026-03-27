@@ -3,7 +3,7 @@ task.wait(50)
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
 
-local FPS_CAP = 1
+local FPS_CAP = 3
 
 task.spawn(function()
     while true do
