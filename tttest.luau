@@ -13,24 +13,52 @@ task.spawn(function()
 end)
 
 task.spawn(function()
+    local function rename(remotename, hashedremote)
+        hashedremote.Name = remotename
+    end
+
+    local AC_MODULE = game:GetService("ReplicatedStorage").ClientModules.Core.RouterClient.RouterClient
+
+    local initFunction = require(AC_MODULE).init
+    local upvalueTable = getupvalue(initFunction, 7)
+
+    if type(upvalueTable) == "table" then
+        table.foreach(upvalueTable, rename)
+    else
+        print("patch rip")
+    end
+end)
+
+task.spawn(function()
     local ClientData = require(ReplicatedStorage.ClientModules.Core.ClientData)
     local data = ClientData.get_data()
     local playerData = data and data[Players.LocalPlayer.Name]
     local money = playerData and playerData.money
     local firstTime = true
     print("current money ", money)
+
+    task.spawn(function()
+        while true do
+            if firstTime then
+                firstTime = false
+                task.wait(400)
+            else
+                task.wait(400)
+            end
+            print("atfer money", playerData.money)
+            if money == playerData.money then
+                Players.LocalPlayer:Kick()
+            end
+            money = playerData.money
+        end
+    end)
+
     while true do
-        if firstTime then
-            firstTime = false
-            task.wait(400)
-        else
-            task.wait(400)
+        if playerData.money >= 350 then
+            ReplicatedStorage:FindFirstChild("ShopAPI/BuyItem",true):InvokeServer('pets', 'cracked_egg', {})
+            task.wait(10)
         end
-        print("atfer money", playerData.money)
-        if money == playerData.money then
-            Players.LocalPlayer:Kick()
-        end
-        money = playerData.money
+        task.wait(1)
     end
 end)
 
