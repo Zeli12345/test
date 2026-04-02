@@ -41,7 +41,7 @@ task.spawn(function()
         while true do
             if firstTime then
                 firstTime = false
-                task.wait(400)
+                task.wait(600)
             else
                 task.wait(400)
             end
@@ -64,59 +64,22 @@ end)
 
 task.spawn(function()
     getgenv().Config = {
-        Dashboard = {
-            Enabled = true, -- Connect to Adopt Me dashboard To Control Script/View Stats (https://zekehub.com/dashboard/adoptme)
-            GroupName = "vps1", -- Group name for organizing accounts on dashboard
-        },
-        BabyFarm = true, -- Does baby farm
-        AutoCertificate = false, -- Auto use Pet Handler Pro Certificate when less than 30 days remaining
-        PetFarm = {
+        BabyFarm = false, -- Does baby farm
+            PetFarm = {
             Enabled = true, -- Enables the Pet Farm
             FarmEggs = true, -- If true, equips eggs to hatch them. If false, equips regular pets
             BuyEggs = true, -- If FarmEggs is true and no eggs in inventory, buy eggs automatically
-            EggTypes = {"cracked_egg"}, -- Which eggs to equip ({} = any egg, or {"cracked_egg", "royal_egg"} for specific)
+            EggTypes = {'cracked_egg'}, -- Which eggs to equip ({} = any egg, or {"cracked_egg", "royal_egg"} for specific)
             BuyEggType = "cracked_egg", -- Which egg to buy when BuyEggs is true ("any" or specific egg ID)
             MaxPets = 1, -- How many pets to equip at once (1 = free, 2 = requires Robux gamepass)
-            FarmUntilFullGrown = false, -- If true, selects pets that aren't full grown first
+            FarmUntilFullGrown = true, -- If true, selects pets that aren't full grown first
             PrioritizeFriendship = false, -- If true, selects pets with higher friendship level first
-            SelectiveFarm = false, -- If true, only farm pets in SelecatedPetTypes list
+            SelectiveFarm = false, -- If true, only farm pets in SelectedPetTypes list
             SelectedPetTypes = {}, -- Pet IDs to farm when SelectiveFarm is true (e.g., {"dog", "cat"})
         },
         EventFarm = {
             CandyCliff = false, -- Automatically complete Candy Cliff event tasks and buys a chissle
             MochiNail = false, -- Automatically complete Mochi Nail event and buys the tool needed
-        },
-        AutoTrade = {
-            Enabled = false, -- Enable auto trading
-            AutoAcceptTrades = false, -- Accept incoming trade requests
-            AutoLeaveAfterTrades = false, -- Leave the game after completing trades
-            Usernames = {}, -- Players to send trades to (e.g. {"player1", "player2"})
-            TradeMode = "all", -- "all" = everything in categories, "specific" = only Items list
-            Categories = {}, -- {"pets", "toys", "food", "transport", "gifts", "stickers", "pet_accessories", "roleplay"}
-            Items = {}, -- Item IDs when TradeMode = "specific" (e.g. {"dog", "cat", "turtle"})
-            ItemCounts = {}, -- Max count per item matching Items order (e.g. {30, 12, 5} = 30 dogs, 12 cats, 5 turtles. {} = unlimited all)
-            GlobalPetFilter = {
-                Versions = {}, -- {} = all versions, {"regular", "neon", "mega"} = only these. Fallback for pets NOT in PetFilters
-                Ages = {}, -- {} = all ages, {1, 2, 3, 4, 5, 6} = only these. Mega ignores ages. Fallback for pets NOT in PetFilters
-            },
-            PetFilters = {}, -- Per-pet overrides. If a pet is listed here, GlobalPetFilter is IGNORED for that pet
-            -- Version not listed = NOT traded. {} after version = all ages. {6} = only full grown. Mega always ignores ages
-            -- Example:
-            -- PetFilters = {
-            --     sugarfest_2026_mochi_meow = {
-            --         regular = {6},      -- only full grown regulars
-            --         neon = {4, 5, 6},   -- only flare/sunshine/luminous neons
-            --         mega = {},           -- all megas (ages always ignored for mega)
-            --     },
-            --     turtle = {
-            --         mega = {},           -- ONLY mega turtles (regular and neon NOT traded because not listed)
-            --     },
-            --     dog = {
-            --         regular = {5, 6},   -- post-teen + full grown regulars only
-            --         neon = {},           -- all neon ages
-            --                              -- mega NOT listed = mega dogs NOT traded
-            --     },
-            -- },
         },
         AutoNeon = {
             Enabled = false, -- Enable auto neon/mega fusion
@@ -125,26 +88,28 @@ task.spawn(function()
             SelectedPets = {}, -- {} when NeonAll = true, otherwise {"dog", "cat"} etc
             MaxPerType = {}, -- {} = unlimited, {dog = 2, cat = 1} = limits per pet type
         },
-        AutoPotion = {
-            Enabled = false, -- Use age potions on pets to level them up
-            SelectedPets = {"lny_2026_fire_foal"}, -- Pet IDs to use potions on (empty = does nothing)
-            PotionVersionFilter = {}, -- Per-pet version filter e.g. {dog = {"neon"}, cat = {"regular", "neon"}} - empty = all versions
+        Settings = {
+            ShowOverlay = true, -- Show stats overlay (disables 3D rendering)
+            ReduceGraphics = true, -- Reduce graphics quality to minimum
+            FPSCap = 1, -- FPS cap option (0 = uncapped)
+            LureId = "ice_dimension_2025_ice_soup_bait" -- what lure to use for example: "ice_dimension_2025_ice_soup_bait"
         },
         AutoBuy = {
             Enabled = true, -- Automatically buy items from shops
             SelectedItems = {"pets|pet_recycler_2025_crystal_egg"}, -- Item IDs to buy
             BuyAmounts = {}, -- How many of each item to buy. Example: {5, 10} buys 5 cracked_eggs and 10 sandwiches. Empty {} buys infinite of each item. If there are more items than amounts, remaining items default to infinite.
         },
-        AutoPay = {
-            Enabled = false, -- Send bucks to another player
-            TargetPlayer = "", -- Username of player to pay bucks to
-        },
         AutoOpen = {
-            Enabled = false, -- Open gift boxes, baits, etc automatically
-            Items = {}, -- Item IDs to auto open
+            Enabled = false, -- Open gift boxes automatically
+            Items = {}, -- Item IDs to auto open (e.g., {"winter_2025_angus_box"})
+        },
+       AutoPotion = {
+            Enabled = false, -- Use age potions on pets to level them up
+            SelectedPets = {}, -- Pet IDs to use potions on (empty = does nothing)
+            PotionVersionFilter = {}, -- Per-pet version filter e.g. {dog = {"neon"}, cat = {"regular", "neon"}} - empty = all versions
         },
         AutoRecycle = {
-            Enabled = true, -- Toggle auto recycling on/off
+            Enabled = false, -- Toggle auto recycling on/off
             RarityFilter = {
                 -- Each rarity maps to a list of versions to recycle
                 -- Versions: "regular", "neon", "mega"
@@ -161,43 +126,15 @@ task.spawn(function()
                 rare = {"regular", "neon", "mega"},
                 ultra_rare = {"regular", "neon", "mega"},
             },
-            
             AgeFilter = {3,4,5,6}, -- Empty = all ages, or specific ages e.g. {1, 2, 3, 4, 5, 6} (1=Newborn, 6=Full Grown)
-            ExcludedPets = {}, -- Pet IDs to never recycle e.g. {"dog", "cat", "shadow_dragon"}
+            ExcludedPets = {"diamond_unicorn", "diamond_griffin", "food_pets_2026_dragonfruit_fox", "pet_recycler_2025_giant_panda", "pet_recycler_2025_emberlight", "cat", "dog", "pet_recycler_2025_crystal_egg"}, -- Pet IDs to never recycle e.g. {"dog", "cat", "shadow_dragon"}
         },
-        IdleProgression = {
-            Enabled = false, -- Put pets in pet pen for idle leveling
+       IdleProgression = {
+            Enabled = true, -- Put pets in pet pen for idle leveling
             SelectedPets = {'basic_egg_2022_ant', 'basic_egg_2022_ant','basic_egg_2022_camel','basic_egg_2022_donkey','basic_egg_2022_poodle','basic_egg_2022_orangutan','basic_egg_2022_parakeet','basic_egg_2022_zebra','basic_egg_2022_corgi','basic_egg_2022_robot','basic_egg_2022_swordfish'}, -- Pet IDs to put in pet pen (empty = use all)
             ExcludedPets = {"pet_recycler_2025_crystal_egg"}, -- Pet IDs to never put in pet pen
             PriorityOrder = {"regular", "neon", "mega"}, -- Order: first = highest priority for pen slots (e.g. {"neon", "regular", "mega"})
             PenVersionFilter = {}, -- Per-pet version filter e.g. {dog = {"neon"}, cat = {"regular"}} - empty = all versions
-        },
-        AccountManager = {
-            Enabled = false, -- Master toggle for account management
-            Tool = "", -- "yummy", "farmsync"
-            Yummy = {
-                Action = "completed", -- "completed" = remove cookie/stop, "swap" = next cookie
-                Reason = "Done", -- Suffix for completed file (Completed-{Reason})
-            },
-            FarmSync = {
-                Action = "completed", -- "completed" = move to done folder, "swap" = move and replace
-                FromFolderId = "", -- Fresh cookies folder ID
-                ToFolderId = "", -- Done cookies folder ID
-                ChangeWithoutReplacement = false, -- Remove even if no replacement available
-                ConfigId = nil, -- Config for new account (nil = same config)
-            },
-            Triggers = {
-                AfterTradeComplete = false, -- Requires AutoTrade.AutoLeaveAfterTrades to be enabled
-                MinBucks = 0, -- Change account when bucks >= this (0 = off)
-                MinPotions = 0, -- Change account when potions >= this (0 = off)
-            },
-        },
-        Settings = {
-            AutoShowUI = true, -- Load the UI on script start (main overlay disable for less memory usage)
-            ShowOverlay = true, -- Show stats overlay (disables 3D rendering)
-            ReduceGraphics = true, -- Reduce graphics quality to minimum
-            FPSCap = 0.5, -- FPS cap option (0 = uncapped)
-            LureId = "ice_dimension_2025_ice_soup_bait" -- what lure to use for example: "ice_dimension_2025_ice_soup_bait"
         },
         Webhook = {
             Enabled = false, -- Send webhook notifications to Discord
@@ -214,7 +151,7 @@ task.spawn(function()
         },
     };
     getgenv().scriptkey="euTAZeNfTEWcruviqseWDjorRhqGNgdv"
-    loadstring(game:HttpGet("https://zekehub.com/scripts/AdoptMe/MassFarm.lua"))()
+    loadstring(game:HttpGet("https://zekehub.com/scripts/AdoptMe/Lite.lua"))()
 end)
 
 task.spawn(function()
