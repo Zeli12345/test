@@ -109,7 +109,7 @@ task.spawn(function()
             PotionVersionFilter = {}, -- Per-pet version filter e.g. {dog = {"neon"}, cat = {"regular", "neon"}} - empty = all versions
         },
         AutoRecycle = {
-            Enabled = false, -- Toggle auto recycling on/off
+            Enabled = true, -- Toggle auto recycling on/off
             RarityFilter = {
                 -- Each rarity maps to a list of versions to recycle
                 -- Versions: "regular", "neon", "mega"
@@ -125,14 +125,15 @@ task.spawn(function()
                 uncommon = {"regular", "neon", "mega"},
                 rare = {"regular", "neon", "mega"},
                 ultra_rare = {"regular", "neon", "mega"},
+                legendary = {"regular", "neon", "mega"},
             },
             AgeFilter = {3,4,5,6}, -- Empty = all ages, or specific ages e.g. {1, 2, 3, 4, 5, 6} (1=Newborn, 6=Full Grown)
-            ExcludedPets = {"diamond_unicorn", "diamond_griffin", "food_pets_2026_dragonfruit_fox", "pet_recycler_2025_giant_panda", "pet_recycler_2025_emberlight", "cat", "dog", "pet_recycler_2025_crystal_egg"}, -- Pet IDs to never recycle e.g. {"dog", "cat", "shadow_dragon"}
+            ExcludedPets = {}, -- Pet IDs to never recycle e.g. {"dog", "cat", "shadow_dragon"}
         },
        IdleProgression = {
             Enabled = true, -- Put pets in pet pen for idle leveling
             SelectedPets = {'basic_egg_2022_ant', 'basic_egg_2022_ant','basic_egg_2022_camel','basic_egg_2022_donkey','basic_egg_2022_poodle','basic_egg_2022_orangutan','basic_egg_2022_parakeet','basic_egg_2022_zebra','basic_egg_2022_corgi','basic_egg_2022_robot','basic_egg_2022_swordfish'}, -- Pet IDs to put in pet pen (empty = use all)
-            ExcludedPets = {"pet_recycler_2025_crystal_egg"}, -- Pet IDs to never put in pet pen
+            ExcludedPets = {}, -- Pet IDs to never put in pet pen
             PriorityOrder = {"regular", "neon", "mega"}, -- Order: first = highest priority for pen slots (e.g. {"neon", "regular", "mega"})
             PenVersionFilter = {}, -- Per-pet version filter e.g. {dog = {"neon"}, cat = {"regular"}} - empty = all versions
         },
