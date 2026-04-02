@@ -8,7 +8,8 @@ local FPS_CAP = 1
 task.spawn(function()
     while true do
         task.wait(1)
-        if setfpscap then setfpscap(FPS_CAP) endggg
+        if setfpscap then setfpscap(FPS_CAP) end
+    end
 end)
 
 task.spawn(function()
