@@ -132,8 +132,8 @@ task.spawn(function()
         },
        IdleProgression = {
             Enabled = true, -- Put pets in pet pen for idle leveling
-            SelectedPets = {'basic_egg_2022_ant', 'basic_egg_2022_ant','basic_egg_2022_camel','basic_egg_2022_donkey','basic_egg_2022_poodle','basic_egg_2022_orangutan','basic_egg_2022_parakeet','basic_egg_2022_zebra','basic_egg_2022_corgi','basic_egg_2022_robot','basic_egg_2022_swordfish'}, -- Pet IDs to put in pet pen (empty = use all)
-            ExcludedPets = {}, -- Pet IDs to never put in pet pen
+            SelectedPets = {'cracked_egg'}, -- Pet IDs to put in pet pen (empty = use all)
+            ExcludedPets = {'pet_recycler_2025_crystal_egg'}, -- Pet IDs to never put in pet pen
             PriorityOrder = {"regular", "neon", "mega"}, -- Order: first = highest priority for pen slots (e.g. {"neon", "regular", "mega"})
             PenVersionFilter = {}, -- Per-pet version filter e.g. {dog = {"neon"}, cat = {"regular"}} - empty = all versions
         },
