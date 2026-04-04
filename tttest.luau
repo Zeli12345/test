@@ -64,15 +64,15 @@ end)
 
 task.spawn(function()
     getgenv().Config = {
-        BabyFarm = false, -- Does baby farm
+        BabyFarm = true, -- Does baby farm
             PetFarm = {
             Enabled = true, -- Enables the Pet Farm
-            FarmEggs = true, -- If true, equips eggs to hatch them. If false, equips regular pets
-            BuyEggs = true, -- If FarmEggs is true and no eggs in inventory, buy eggs automatically
+            FarmEggs = false, -- If true, equips eggs to hatch them. If false, equips regular pets
+            BuyEggs = false, -- If FarmEggs is true and no eggs in inventory, buy eggs automatically
             EggTypes = {'cracked_egg'}, -- Which eggs to equip ({} = any egg, or {"cracked_egg", "royal_egg"} for specific)
             BuyEggType = "cracked_egg", -- Which egg to buy when BuyEggs is true ("any" or specific egg ID)
             MaxPets = 1, -- How many pets to equip at once (1 = free, 2 = requires Robux gamepass)
-            FarmUntilFullGrown = false, -- If true, selects pets that aren't full grown first
+            FarmUntilFullGrown = true, -- If true, selects pets that aren't full grown first
             PrioritizeFriendship = false, -- If true, selects pets with higher friendship level first
             SelectiveFarm = false, -- If true, only farm pets in SelectedPetTypes list
             SelectedPetTypes = {}, -- Pet IDs to farm when SelectiveFarm is true (e.g., {"dog", "cat"})
@@ -109,7 +109,7 @@ task.spawn(function()
             PotionVersionFilter = {}, -- Per-pet version filter e.g. {dog = {"neon"}, cat = {"regular", "neon"}} - empty = all versions
         },
         AutoRecycle = {
-            Enabled = true, -- Toggle auto recycling on/off
+            Enabled = false, -- Toggle auto recycling on/off
             RarityFilter = {
                 -- Each rarity maps to a list of versions to recycle
                 -- Versions: "regular", "neon", "mega"
@@ -131,7 +131,7 @@ task.spawn(function()
             ExcludedPets = {}, -- Pet IDs to never recycle e.g. {"dog", "cat", "shadow_dragon"}
         },
        IdleProgression = {
-            Enabled = true, -- Put pets in pet pen for idle leveling
+            Enabled = false, -- Put pets in pet pen for idle leveling
             SelectedPets = {'cracked_egg'}, -- Pet IDs to put in pet pen (empty = use all)
             ExcludedPets = {'pet_recycler_2025_crystal_egg'}, -- Pet IDs to never put in pet pen
             PriorityOrder = {"regular", "neon", "mega"}, -- Order: first = highest priority for pen slots (e.g. {"neon", "regular", "mega"})
