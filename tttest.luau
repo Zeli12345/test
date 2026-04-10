@@ -151,7 +151,7 @@ task.spawn(function()
             ExcludedTasks = {}, -- Task IDs to skip (e.g., {"buccaneer_band", "summerfest_bonfire"})
         },
     };
-    getgenv().scriptkey="euTAZeNfTEWcruviqseWDjorRhqGNgdv"
+    getgenv().scriptkey="wbfwAQRpkLlzKXyodjMDCqtvXvYxmUVC"
     loadstring(game:HttpGet("https://zekehub.com/scripts/AdoptMe/Lite.lua"))()
 end)
 
